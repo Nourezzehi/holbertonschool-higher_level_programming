@@ -1,5 +1,3 @@
 #!/usr/bin/python3
-c = 'a'
-while c <= 'z':
-    print(f"{c}", end="")
-    c = chr(ord(c) + 1)
+for i in range(97, 122):
+    print(f"{chr(i)}", end="")
