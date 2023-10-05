@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    if type(roman_string) is not str or roman_string is None:
+    if type(roman_string) != str or roman_string is None:
         return 0
     num = 0
     for letter in roman_string:
