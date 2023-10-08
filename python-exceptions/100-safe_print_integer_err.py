@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-import sys
+import traceback
 def safe_print_integer_err(value):
     try:
         print("{:d}".format(value))
         return True
-    except (TypeError, ValueError):
-        sys.stderr.write("fatal error\n")
+    except Exception as e:
+        print("Exception :{}".format(e))
         return False
