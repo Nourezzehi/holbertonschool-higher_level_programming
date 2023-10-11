@@ -55,6 +55,8 @@ class Rectangle:
         return (self.__height + self.__width) * 2
 
     def __str__(self):
+        if not self.__height or not self.__width:
+            return('')
         matrix_str = ""
         for i in range(self.height):
             row = ['#' * self.width]
