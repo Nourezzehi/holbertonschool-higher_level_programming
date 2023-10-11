@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""""""
+"""prints the square"""
 
 
 class Square:
@@ -32,6 +32,7 @@ class Square:
 
     def my_print(self):
         """prints the square"""
+
         if not self.__size:
             print()
         else:
