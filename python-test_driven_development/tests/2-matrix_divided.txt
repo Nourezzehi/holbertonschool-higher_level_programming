@@ -13,7 +13,7 @@ ZeroDivisionError: division by zero
 
 >>> matrix_divided([[1, 2], [3, "hello"]], 2)
 Traceback (most recent call last):
-TypeError: matrix must be a matrix (list of lists) of integers/floats
+TypeError: matrix must be a matrix (list of lists) of integers / floats
 
 >>> matrix_divided([[1, 2], [3]], 2)
 Traceback (most recent call last):
@@ -25,7 +25,7 @@ TypeError: matrix must be a matrix (list of lists) of integers / floats
 
 >>> matrix_divided([None], 2)
 Traceback (most recent call last):
-TypeError: 'NoneType' object is not iterable
+TypeError: matrix must be a matrix (list of lists) of integers / floats
 
 >>> matrix_divided([[3, 4], [True, 2]], 2)
 [1.5, 2.0, 0.5, 1.0]
