@@ -16,12 +16,23 @@ that value is equivalent to using the ``+`` operator.
 ::
     >>> add_integer(2, 3)
     5
-    
 
+::
+    >>> add_integer()
+    Traceback (most recent call last):
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+::
+    >>> add_integer(2, 3, 4)
+    Traceback (most recent call last):
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
 ::
     >>> add_integer(2.5, 2)
     4
 
+::
+    >>> add_integer(-2, 3)
+    1  
 ::
     >>> add_integer(2, 2.5)
     4
