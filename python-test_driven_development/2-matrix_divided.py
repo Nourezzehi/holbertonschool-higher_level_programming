@@ -6,9 +6,7 @@ def matrix_divided(matrix, div):
     """devide every matrix item"""
 
     new_matrix = [[]]
-    if not matrix:
-        return new_matrix
-    if not isinstance(matrix, list):
+    if not isinstance(matrix, list) or not matrix:
         raise TypeError("matrix must be a matrix (list of lists) "
                         "of integers / floats")
     for row in matrix:
