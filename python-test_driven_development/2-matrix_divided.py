@@ -5,7 +5,13 @@ def matrix_divided(matrix, div):
     new_matrix = [[]]
     if not matrix:
         return new_matrix
+    if not isinstance(matrix, list):
+        raise TypeError("matrix must be a matrix (list of lists) "
+                        "of integers / floats")
     for row in matrix:
+        if not isinstance(row, list):
+            raise TypeError("matrix must be a matrix (list of lists) "
+                            "of integers / floats")
         for item in row:
             if not isinstance(item, int) and not isinstance(item, float):
                 raise TypeError("matrix must be a matrix (list of lists) "
