@@ -2,7 +2,7 @@
 """define a new class"""
 
 
-class Rectangle:
+class Rectangle():
     """Rectangle class"""
 
     number_of_instances = 0
@@ -93,6 +93,5 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
-        """ returns a new rectangle with width==height==size
-        """
+        """ returns a new rectangle with width==height==size"""
         return cls(size, size)
