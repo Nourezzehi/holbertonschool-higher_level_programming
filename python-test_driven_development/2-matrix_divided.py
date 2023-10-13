@@ -3,6 +3,8 @@ def matrix_divided(matrix, div):
     """devide every matrix item"""
 
     new_matrix = [[]]
+    if not matrix:
+        return new_matrix
     for row in matrix:
         for item in row:
             if not isinstance(item, int) and not isinstance(item, float):
