@@ -63,7 +63,7 @@ class Rectangle:
             return ""
         matrix_str = ""
         for i in range(self.height):
-            row = ['#' * self.width]
+            row = [str(self.print_symbol) * self.width]
             if i != self.__height - 1:
                 matrix_str += ''.join(row) + "\n"
         matrix_str += ''.join(row)
