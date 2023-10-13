@@ -96,4 +96,3 @@ class Rectangle:
         """ returns a new rectangle with width==height==size
         """
         return cls(size, size)
-    
