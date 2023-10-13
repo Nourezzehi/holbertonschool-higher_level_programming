@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""devide matrix"""
+
+
 def matrix_divided(matrix, div):
     """devide every matrix item"""
 
