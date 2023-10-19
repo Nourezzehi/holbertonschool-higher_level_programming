@@ -2,5 +2,5 @@
 """empty class"""
 
 
-class BaseGeometry:
+class BaseGeometry():
     pass
