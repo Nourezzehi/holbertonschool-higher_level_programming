@@ -1,11 +1,20 @@
 >>> MyList = __import__('1-my_list').MyList
 
     >>> my_list = MyList()
+
+    >>> issubclass(MyList, list)
+    True
+
 	>>> my_list.append(10)
 	>>> my_list.append(9)
 	>>> print(my_list)
 	[10, 9]
 
+
+    >>> my_list = MyList(None)
+    Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+    TypeError: 'NoneType' object is not iterable
 
     >>> my_list = MyList()
 	>>> my_list.append(10)
