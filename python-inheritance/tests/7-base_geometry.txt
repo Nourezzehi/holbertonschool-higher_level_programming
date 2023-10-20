@@ -1,0 +1,29 @@
+``7-base_geometry`` function
+
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+>>> new_bg = BaseGeometry()
+>>> type(new_bg)
+<class '7-base_geometry.BaseGeometry'>
+
+>>> new_bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
+>>> new_bg.integer_validator()
+Traceback (most recent call last):
+TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> new_bg.integer_validator("testing", 0)
+Traceback (most recent call last):
+ValueError: testing must be greater than 0
+
+>>> new_bg.integer_validator(10, "testing")
+Traceback (most recent call last):
+ValueError: Unknown format code 's' for object of type 'int'
+
+>>> new_bg.integer_validator(None)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
