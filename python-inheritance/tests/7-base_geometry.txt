@@ -39,3 +39,18 @@
     >>> new_bg.integer_validator("bool", True)
     Traceback (most recent call last):
     TypeError: bool must be an integer
+
+    >>> new_bg = BaseGeometry()
+    >>> bg.integer_validator("checkme", [3])
+    Traceback (most recent call last):
+    TypeError: checkme must be an integer
+
+    >>> new_bg = BaseGeometry()
+    >>> bg.integer_validator("checkme", {3, 4})
+    Traceback (most recent call last):
+    TypeError: checkme must be an integer
+
+    >>> new_bg = BaseGeometry()
+    >>> new_bg.integer_validator("checkme", (4,))
+    Traceback (most recent call last):
+    TypeError: checkme must be an integer
