@@ -53,8 +53,7 @@ class Square:
         if not self.__size:
             print()
         else:
-            if self.__position[1] > 0:
-                print()
+            print('\n'*self.__position[1], end='')
             for i in range(self.__size):
                 for i in range(self.__position[0]):
                     print(end=" ")
