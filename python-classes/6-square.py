@@ -50,7 +50,7 @@ class Square:
     def my_print(self):
         """prints the square"""
 
-        if not self.__size:
+        if not self.size:
             print()
         else:
             print('\n'*self.__position[1], end='')
