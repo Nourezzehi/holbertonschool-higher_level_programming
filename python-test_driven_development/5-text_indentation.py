@@ -7,7 +7,7 @@ def text_indentation(text):
         ., ? and :"""
 
     if type(text) is not str:
-        raise TypeError("text must be a string")
+        raise TypeError('text must be a string')
     i = 0
     while i < len(text):
         if text[i] in [':', '.', '?']:
