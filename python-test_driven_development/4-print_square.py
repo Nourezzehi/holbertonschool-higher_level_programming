@@ -3,7 +3,7 @@
 
 
 def print_square(size):
-    """prints a square with the character '#' """
+    """prints a square with the character '#'"""
 
     if type(size) is not int:
         raise TypeError("size must be an integer")
