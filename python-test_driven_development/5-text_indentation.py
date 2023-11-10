@@ -13,6 +13,7 @@ def text_indentation(text):
         if text[i] in [':', '.', '?']:
             print(text[i])
             print()
+            i += 1
         else:
             print(text[i], end='')
         i += 1
