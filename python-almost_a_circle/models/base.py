@@ -64,6 +64,6 @@ class Base:
         with open("{}.json".format(cls.__name__), 'r') as f:
             l1 = cls.from_json_string(f.read())
 
-        for item in l:
+        for item in l1:
             list_inst.append(cls.create(**item))
         return list_inst
