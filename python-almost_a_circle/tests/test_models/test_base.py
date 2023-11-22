@@ -4,6 +4,8 @@
 import unittest
 from models.base import Base
 import json
+from models.rectangle import Rectangle
+from models.square import Square
 
 class TestBaseClass(unittest.TestCase):
     def test_instantiation_with_id_none(self):
@@ -33,6 +35,22 @@ class TestBaseClass(unittest.TestCase):
         result = Base.to_json_string(input_data)
         expected_result = json.dumps(input_data)
         self.assertEqual(result, expected_result)
+
+    def test_save_to_file(self):
+            r1 = Rectangle(10, 7, 2, 8)
+            r2 = Rectangle(2, 4)
+            s1 = Square(5)
+            Base.save_to_file([r1, r2, s1])
+            filename = "Base.json"
+            with open(filename, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            expected_data = [
+                r1.to_dictionary(),
+                r2.to_dictionary(),
+                s1.to_dictionary()
+            ]
+            self.assertEqual(data, expected_data)
+
 
 if __name__ == '__main__':
     unittest.main()
