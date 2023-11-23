@@ -31,7 +31,7 @@ class Square(Rectangle):
     def update(self, *args, **kwargs):
         """Update"""
 
-        if args:
+        if args and len(args) != 0:
             for idx in range(len(args)):
                 if not idx:
                     self.id = args[idx]
