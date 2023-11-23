@@ -10,10 +10,10 @@ class Rectangle(Base):
         """constructor"""
 
         super().__init__(id)
-        self.x = x
-        self.y = y
-        self.height = height
-        self.width = width
+        self.__x = x
+        self.__y = y
+        self.__height = height
+        self.__width = width
 
     @property
     def x(self):
