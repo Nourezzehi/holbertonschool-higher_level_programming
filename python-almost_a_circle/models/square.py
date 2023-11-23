@@ -9,7 +9,7 @@ class Square(Rectangle):
     """square inherits from Rectangle"""
 
     def __init__(self, size, x=0, y=0, id=None):
-        """instantiation"""
+        """constructor"""
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
@@ -31,7 +31,7 @@ class Square(Rectangle):
     def update(self, *args, **kwargs):
         """Update"""
 
-        if args and len(args) != 0:
+        if args:
             for idx in range(len(args)):
                 if not idx:
                     self.id = args[idx]
@@ -47,7 +47,6 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         """returns the dictionary reprentation of a square"""
-
         return {
             'id': self.id,
             'x': self.x,
