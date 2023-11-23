@@ -7,13 +7,13 @@ class Rectangle(Base):
     """inherits of base class"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """instantiation"""
+        """constructor"""
 
-        id = super().__init__(id)
-        self.x = x
-        self.y = y
-        self.height = height
-        self.width = width
+        super().__init__(id)
+        self.__x = x
+        self.__y = y
+        self.__height = height
+        self.__width = width
 
     @property
     def x(self):
@@ -22,11 +22,6 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
-        """x-set_method"""
-        if not isinstance(value, int):
-            raise TypeError("x must be an integer")
-        if value < 0:
-            raise ValueError("x must be >= 0")
         self.__x = value
 
     @property
@@ -94,7 +89,7 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """update"""
-        if args and len(args) != 0:
+        if args:
             for idx in range(len(args)):
                 self.id = args[idx]
                 self.__width = args[idx]

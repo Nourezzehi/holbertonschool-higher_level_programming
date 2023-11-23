@@ -5,16 +5,16 @@ import json
 
 
 class Base:
-    """our class"""
+    """our base class"""
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """instantiation"""
-        if id is None:
-            Base.__nb_objects += 1
-            self.id = self.__nb_objects
-        else:
+        """constructor"""
+        if id:
             self.id = id
+        else:
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects            
 
     @staticmethod
     def to_json_string(list_dictionaries):
@@ -50,10 +50,13 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
-        if cls.__name__ is 'Rectangle':
+        if cls.__name__ == 'Rectangle':
             inst = cls(4, 2)
-        elif cls.__name__ is 'Square':
+        elif cls.__name__ == 'Square':
             inst = cls(4)
+        else:
+            return None
+
         inst.update(**dictionary)
         return inst
 
@@ -61,9 +64,12 @@ class Base:
     def load_from_file(cls):
         """returns a list of instances"""
         list_inst = []
-        with open("{}.json".format(cls.__name__), 'r') as f:
-            l1 = cls.from_json_string(f.read())
+        try:
+            with open("{}.json".format(cls.__name__), 'r') as f:
+                l1 = cls.from_json_string(f.read())
+        except IOError:
+            return []
 
-        for item in l1:
-            list_inst.append(cls.create(**item))
+        for i in l1:
+            list_inst.append(cls.create(**i))
         return list_inst
