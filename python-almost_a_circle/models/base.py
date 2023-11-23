@@ -14,7 +14,7 @@ class Base:
             self.id = id
         else:
             Base.__nb_objects += 1
-            self.id = Base.__nb_objects            
+            self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
@@ -63,13 +63,15 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """returns a list of instances"""
-        list_inst = []
+        filename = "{}.json".format(cls.__name__)
         try:
-            with open("{}.json".format(cls.__name__), 'r') as f:
-                l1 = cls.from_json_string(f.read())
-        except IOError:
+            with open(filename, "r") as f:
+                line = f.read()
+                list = cls.from_json_string(line)
+                instan_list = []
+                for dict in list:
+                    instance = cls.create(**dict)
+                    instan_list.append(instance)
+                return instan_list
+        except FileNotFoundError:
             return []
-
-        for i in l1:
-            list_inst.append(cls.create(**i))
-        return list_inst

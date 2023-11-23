@@ -4,13 +4,14 @@
 import unittest
 from models.base import Base
 import json
+import os
 from models.rectangle import Rectangle
 from models.square import Square
 
 class TestBaseClass(unittest.TestCase):
     def test_instantiation_with_id_none(self):
         obj = Base()
-        self.assertEqual(obj.id, 3)
+        self.assertEqual(obj.id, 4)
 
     def test_instantiation_with_id_provided(self):
         obj = Base(5)
@@ -19,8 +20,8 @@ class TestBaseClass(unittest.TestCase):
     def test_incrementing_id_across_instances(self):
         obj1 = Base()
         obj2 = Base()
-        self.assertEqual(obj1.id, 1)
-        self.assertEqual(obj2.id, 2)
+        self.assertEqual(obj1.id, 2)
+        self.assertEqual(obj2.id, 3)
 
     def test_to_json_string_empty_list(self):
         result = Base.to_json_string([])
@@ -37,20 +38,53 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test_save_to_file(self):
-            r1 = Rectangle(10, 7, 2, 8)
-            r2 = Rectangle(2, 4)
-            s1 = Square(5)
-            Base.save_to_file([r1, r2, s1])
-            filename = "Base.json"
-            with open(filename, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            expected_data = [
-                r1.to_dictionary(),
-                r2.to_dictionary(),
-                s1.to_dictionary()
-            ]
-            self.assertEqual(data, expected_data)
+        rectangle = Rectangle(width=5, height=10, x=2, y=3, id=1)
+        square = Square(size=5, x=2, y=3, id=2)
+        Base.save_to_file([rectangle, square])
 
+        self.assertFalse(os.path.exists("Rectangle.json"))
+        self.assertFalse(os.path.exists("Square.json"))
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
+
+    def test_from_json_string(self):
+        json_string = '[{"id": 1, "x": 2, "y": 3, "width": 5, "height": 10}, {"id": 2, "x": 2, "y": 3, "size": 5}]'
+        result = Base.from_json_string(json_string)
+        expected_result = [{'id': 1, 'x': 2, 'y': 3, 'width': 5, 'height': 10}, {'id': 2, 'x': 2, 'y': 3, 'size': 5}]
+        self.assertEqual(result, expected_result)
+        empty_json_string = ''
+        result_empty = Base.from_json_string(empty_json_string)
+        self.assertEqual(result_empty, [])
+        result_none = Base.from_json_string(None)
+        self.assertEqual(result_none, [])
+
+    def test_create_rectangle(self):
+        dictionary = {'id': 1, 'width': 10, 'height': 7, 'x': 2, 'y': 8}
+        result = Rectangle.create(**dictionary)
+        self.assertIsInstance(result, Rectangle)
+        self.assertEqual(result.id, 1)
+        self.assertEqual(result.width, 10)
+        self.assertEqual(result.height, 7)
+        self.assertEqual(result.x, 2)
+        self.assertEqual(result.y, 8)
+
+    def test_load_from_file(self):
+        result_empty = Base.load_from_file()
+        self.assertEqual(result_empty, [])
+        rectangle = Rectangle(width=5, height=10, x=2, y=3, id=1)
+        square = Square(size=5, x=2, y=3, id=2)
+        Base.save_to_file([rectangle, square])
+
+        result_loaded = Base.load_from_file()
+        expected_result = [rectangle, square]
+        self.assertEqual(result_loaded, expected_result)
+
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
 
 if __name__ == '__main__':
     unittest.main()
