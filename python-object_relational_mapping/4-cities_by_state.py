@@ -25,7 +25,9 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     """exeute SQL Query"""
-    cur.execute("SELECT * FROM cities ORDER By id")
+    cur.execute("SELECT cities.id , cities.name , states.name \
+            FROM cities JOIN states ON states.id = cities.state_id \
+            ORDER BY cities.id")
 
     """fetch Query results"""
     results = cur.fetchall()
