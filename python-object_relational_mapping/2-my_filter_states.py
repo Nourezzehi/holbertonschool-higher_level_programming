@@ -25,7 +25,7 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     query = "SELECT * FROM states WHERE name ='{}'ORDER By id".format(name)
-    
+
     """exeute SQL Query"""
     cur.execute(query)
 
