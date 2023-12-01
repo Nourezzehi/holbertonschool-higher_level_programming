@@ -24,7 +24,8 @@ if __name__ == "__main__":
     """Create a cursor object"""
     cur = db.cursor()
 
-    query = "SELECT * FROM states WHERE BINARY name ='{}'ORDER By id".format(name)
+    query = "SELECT * FROM states WHERE BINARY name ='{}'ORDER By id".format(
+        name)
 
     """exeute SQL Query"""
     cur.execute(query)
