@@ -7,8 +7,8 @@ import sys
 
 if __name__ == "__main__":
     """
-    connects to a MySQL server and lists all states
-        from the database hbtn_0e_0_usa
+ takes in arguments and displays all values in the states table of
+    hbtn_0e_0_usa where name matches the argument
     """
 
     username, password, database, name = sys.argv[1:5]
