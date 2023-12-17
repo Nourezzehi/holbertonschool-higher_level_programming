@@ -50,6 +50,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
+        """x-set_method"""
         if type(value) is not int:
             raise TypeError("x must be an integer")
         if value < 0:
